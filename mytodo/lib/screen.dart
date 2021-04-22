@@ -20,9 +20,9 @@ class _TaskScreenState extends State<TaskScreen> {
         onPressed: () {
           showModalBottomSheet(
               context: context,
-              builder: (context) => AddTask((mynewVal) {
+              builder: (context) => AddTask(myfun: (value) {
                     setState(() {
-                      tasks.add(Task(mystring: mynewVal));
+                      tasks.add(Task(mystring: value));
                     });
                   }));
         },

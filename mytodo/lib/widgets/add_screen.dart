@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AddTask extends StatelessWidget {
   final Function myfun;
-  AddTask(this.myfun);
+  AddTask({this.myfun});
   @override
   Widget build(BuildContext context) {
     String mynewVal;
