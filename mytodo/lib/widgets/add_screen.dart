@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
-class AddTask extends StatefulWidget {
-  @override
-  _AddTaskState createState() => _AddTaskState();
-}
-
-class _AddTaskState extends State<AddTask> {
+class AddTask extends StatelessWidget {
+  final Function myfun;
+  AddTask(this.myfun);
   @override
   Widget build(BuildContext context) {
+    String mynewVal;
+
     return Container(
       height: 800,
       color: Color(0xff757575),
@@ -25,9 +24,12 @@ class _AddTaskState extends State<AddTask> {
                 style: TextStyle(color: Colors.lightBlueAccent, fontSize: 30),
               ),
               TextField(
+                onChanged: (newVal) {
+                  mynewVal = newVal;
+                },
                 decoration: InputDecoration(hintText: 'TYPE HERE'),
               ),
-              TextButton(onPressed: null, child: Text('ADD'))
+              TextButton(onPressed: myfun(mynewVal), child: Text('ADD'))
             ],
           ),
         ),

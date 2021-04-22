@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mytodo/widgets/task_list.dart';
 import 'package:mytodo/widgets/add_screen.dart';
+import 'package:mytodo/models/task.dart';
 
 class TaskScreen extends StatefulWidget {
   @override
@@ -10,13 +11,20 @@ class TaskScreen extends StatefulWidget {
 class _TaskScreenState extends State<TaskScreen> {
   get builder => null;
 
+  List<Task> tasks = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
-              context: context, builder: (context) => AddTask());
+              context: context,
+              builder: (context) => AddTask((mynewVal) {
+                    setState(() {
+                      tasks.add(Task(mystring: mynewVal));
+                    });
+                  }));
         },
         backgroundColor: Colors.blue,
         child: Icon(Icons.add),
@@ -63,7 +71,7 @@ class _TaskScreenState extends State<TaskScreen> {
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30),
                         topRight: Radius.circular(30))),
-                child: TaskList()),
+                child: TaskList(tasks)),
           )
         ],
       ),
